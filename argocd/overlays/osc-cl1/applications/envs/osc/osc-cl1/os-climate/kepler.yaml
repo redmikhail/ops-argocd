@@ -7,10 +7,10 @@ spec:
   project: os-climate
   source:
     path: kepler/overlays/osc/osc-cl1
-    repoURL: https://github.com/os-climate/ops-argocd.git
+    repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: main
   destination:
-    name: osc-cl1
+    name: in-cluster
     namespace: kepler-monitoring
   # syncPolicy:
   #   automated:

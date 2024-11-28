@@ -4,8 +4,10 @@ metadata:
   name: os-climate
 spec:
   destinations:
-  - namespace: '*'
-    server: 'https://api.odh-cl1.apps.os-climate.org:6443'
+    - namespace: '*'
+      server: '*'
+    - namespace: openshift-gitops
+      server: in-cluster
   sourceRepos:
     - 'https://github.com/os-climate/*'
     - 'https://github.com/redmikhail/ops-argocd.git'

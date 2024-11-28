@@ -5,12 +5,12 @@ metadata:
   name: opendatahub-operator
 spec:
   destination:
-    name: osc-cl1
+    name: in-cluster
     namespace: opendatahub-operator
   project: os-climate
   source:
     path: odh-operator/overlays/osc/osc-cl1
-    repoURL: https://github.com/os-climate/ops-argocd.git
+    repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: main
   syncPolicy:
     automated:

@@ -4,11 +4,11 @@ metadata:
   name: cluster-resources
 spec:
   destination:
-    name: osc-cl1
+    name: in-cluster
   project: os-climate
   source:
     path: cluster-scope/overlays/osc/osc-cl1
-    repoURL: https://github.com/os-climate/ops-argocd.git
+    repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: main
   # syncPolicy:
   #   automated:

@@ -5,7 +5,7 @@ metadata:
   name: cloudbeaver
 spec:
   destination:
-    name: osc-cl1
+    name: in-cluster
     namespace: odh-trino
   project: os-climate
   source:

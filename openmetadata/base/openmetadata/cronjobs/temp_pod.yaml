@@ -1,0 +1,53 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: temp-backup
+  namespace: openmetadata
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - resources: {}
+      terminationMessagePath: /dev/termination-log
+      name: om-backup
+      command:
+        - /usr/bin/dumb-init
+        - '--'
+        - /entrypoint
+      securityContext: {}
+      imagePullPolicy: IfNotPresent
+      terminationMessagePolicy: File
+      env:
+        - name: CLUSTER_ID
+          value: odh-cl1
+        - name: OM_BACKUP_BUCKET
+          valueFrom:
+            secretKeyRef:
+              name: openmetadata-s3buckets
+              key: OM_BACKUP_BUCKET
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: openmetadata-s3buckets
+              key: OM_BACKUP_BUCKET_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openmetadata-s3buckets
+              key: OM_BACKUP_BUCKET_SECRET_ACCESS_KEY
+      envFrom:
+        - secretRef:
+            name: mysql-secrets
+      image: 'quay.io/os-climate/ingestion:1.0.5'
+      args:
+        - bash
+        - '-c'
+        - |
+          metadata backup \
+          -u ${OPENMETADATA_DB_USER} \
+          -p ${OPENMETADATA_DB_PASSWORD} \
+          -d ${OPENMETADATA_DB} \
+          -H mysql \
+          --output=/tmp \
+          --upload-destination-type AWS \
+          --upload https://s3.us-east-1.amazonaws.com ${OM_BACKUP_BUCKET} openmetadata/${CLUSTER_ID}
+  serviceAccount: airflow
