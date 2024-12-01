@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acme-operator
+spec:
+  destination:
+    name: in-cluster
+    namespace: acme-operator
+  project: os-climate
+  source:
+    path: acme-operator/overlays/osc/osc-cl2
+    repoURL: https://github.com/redmikhail/ops-argocd.git
+    targetRevision: argocd-migration
+  ignoreDifferences:
+    - group: ""
+      jsonPointers:
+        - /data/cert-issuer.types.acme.openshift.io
+      kind: ConfigMap
+      name: letsencrypt-live
+      namespace: acme-operator
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #   syncOptions:
+  #   - Validate=false
+  #   - ApplyOutOfSyncOnly=true

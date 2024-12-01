@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-osc-cl2
+spec:
+  destination:
+    namespace: openshift-gitops
+    name: in-cluster
+  project: osc-infra
+  source:
+    path: argocd/overlays/osc-cl2/applications/envs/osc/osc-cl2
+    repoURL: https://github.com/redmikhail/ops-argocd.git
+    targetRevision: argocd-migration
+  # syncPolicy:
+  #   syncOptions:
+  #   - Validate=false
+  #   - ApplyOutOfSyncOnly=true

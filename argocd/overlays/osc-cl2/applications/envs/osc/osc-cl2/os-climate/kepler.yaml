@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kepler
+spec:
+  project: os-climate
+  source:
+    path: kepler/overlays/osc/osc-cl2
+    repoURL: https://github.com/redmikhail/ops-argocd.git
+    targetRevision: argocd-migration
+  destination:
+    name: in-cluster
+    namespace: kepler-monitoring
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #   syncOptions:
+  #     - Validate=false

@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka
+spec:
+  destination:
+    name: in-cluster
+    namespace: kafka
+  project: os-climate
+  source:
+    path: kafka/overlays/osc/osc-cl2
+    repoURL: https://github.com/redmikhail/ops-argocd.git
+    targetRevision: argocd-migration
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #   syncOptions:
+  #   - Validate=false
+  #   - ApplyOutOfSyncOnly=true

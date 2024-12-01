@@ -1,0 +1,20 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+spec:
+  destination:
+    name: in-cluster
+    namespace: opf-monitoring
+  project: osc-infra
+  source:
+    path: grafana/overlays/osc/osc-cl2
+    repoURL: https://github.com/redmikhail/ops-argocd.git
+    targetRevision: argocd-migration
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #   syncOptions:
+  #   - Validate=false

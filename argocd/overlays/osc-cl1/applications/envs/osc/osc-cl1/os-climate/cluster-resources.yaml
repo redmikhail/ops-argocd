@@ -9,7 +9,7 @@ spec:
   source:
     path: cluster-scope/overlays/osc/osc-cl1
     repoURL: https://github.com/redmikhail/ops-argocd.git
-    targetRevision: main
+    targetRevision: argocd-migration
   # syncPolicy:
   #   automated:
   #     prune: true

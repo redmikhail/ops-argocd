@@ -8,7 +8,7 @@ spec:
   source:
     path: kepler/overlays/osc/osc-cl1
     repoURL: https://github.com/redmikhail/ops-argocd.git
-    targetRevision: main
+    targetRevision: argocd-migration
   destination:
     name: in-cluster
     namespace: kepler-monitoring

@@ -6,7 +6,7 @@ spec:
   project: os-climate
   source:
     repoURL: https://github.com/redmikhail/ops-argocd.git
-    targetRevision: main
+    targetRevision: argocd-migration
     path: reloader/overlays/osc/osc-cl1
   destination:
     name: in-cluster

@@ -11,7 +11,7 @@ spec:
     path: argocd/overlays/osc-cl3/applications/envs/osc/osc-cl2
     repoURL: https://github.com/os-climate/ops-argocd.git
     targetRevision: main
-  syncPolicy:
-    syncOptions:
-    - Validate=false
-    - ApplyOutOfSyncOnly=true
+  # syncPolicy:
+  #   syncOptions:
+  #   - Validate=false
+  #   - ApplyOutOfSyncOnly=true

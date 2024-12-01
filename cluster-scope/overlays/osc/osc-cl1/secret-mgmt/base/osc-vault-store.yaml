@@ -12,5 +12,5 @@ spec:
           serviceAccountRef:
             name: vault-secret-fetcher
       path: k8s_secrets
-      server: 'https://vault-ui-vault.apps.osc-cl3.eqcq.p1.openshiftapps.com/'
+      server: 'https://vault-ui-vault.apps.odh-cl2.apps.os-climate.org/'
       version: v2
