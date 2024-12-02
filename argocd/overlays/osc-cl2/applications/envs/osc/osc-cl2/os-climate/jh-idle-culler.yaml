@@ -12,9 +12,9 @@ spec:
     path: jupyterhub-idle-culler/overlays/osc/osc-cl2
     repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: argocd-migration
-  syncPolicy:
-    syncOptions:
-    - Validate=false
+  # syncPolicy:
+  #   syncOptions:
+  #   - Validate=false
   ignoreDifferences:
     - group: apps.openshift.io
       kind: DeploymentConfig
