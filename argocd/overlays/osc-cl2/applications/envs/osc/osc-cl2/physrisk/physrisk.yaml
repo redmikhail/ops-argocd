@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kepler
+  name: physrisk
+  namespace: openshift-gitops
 spec:
-  project: os-climate
+  project: physrisk
   source:
-    path: kepler/overlays/osc/osc-cl2
+    path: physrisk/kustomize/overlays/osc/osc-cl2
     repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: argocd-migration
   destination:
     name: in-cluster
-    namespace: kepler-monitoring
+    namespace: physrisk
   # syncPolicy:
   #   automated:
   #     prune: true

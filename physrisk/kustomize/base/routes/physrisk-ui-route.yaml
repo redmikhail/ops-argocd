@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: physrisk-ui
+  labels:
+    app: physrisk-ui
+    app.kubernetes.io/component: physrisk-ui
+    app.kubernetes.io/name: physrisk-ui
+    app.kubernetes.io/part-of: physrisk
+spec:
+  to:
+    kind: Service
+    name: physrisk-ui
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

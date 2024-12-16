@@ -13,7 +13,6 @@ resources:
   - jh-idle-culler.yaml
   - k8s-annotations-exporter.yaml
   - kafka.yaml
-  - kepler.yaml
   - kfdefs.yaml
   - kfp-tekton.yaml
   - odh-operator.yaml

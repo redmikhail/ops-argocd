@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: physrisk-ui
+    app.kubernetes.io/component: physrisk-ui
+    app.kubernetes.io/name: physrisk-ui
+    app.kubernetes.io/part-of: physrisk
+  name: physrisk-ui
+  namespace: sandbox
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: physrisk-ui
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: physrisk-ui
+        deploymentconfig: physrisk-ui
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: base-uris
+            defaultMode: 420
+      containers:
+      - image: quay.io/mmikhail/physrisk-ui:uri
+        imagePullPolicy: IfNotPresent
+        name: physrisk-ui
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+          - name: config
+            mountPath: /app/BaseUris.js
+            subPath: BaseUris.js
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+

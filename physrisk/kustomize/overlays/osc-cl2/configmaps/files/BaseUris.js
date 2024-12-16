@@ -1,0 +1,1 @@
+window.BASE_API = 'https://physrisk-api-physrisk.apps.odh-cl2.apps.os-climate.org';

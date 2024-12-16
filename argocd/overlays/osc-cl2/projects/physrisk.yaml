@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: physrisk
+  labels:
+    project-template: global
+spec:
+  destinations:
+    - namespace: 'physrisk-namespace'
+      server: in-cluster
+  sourceRepos:
+    - '*'
+  roles:
+    - name: project-admin
+      description: Read/Write access to this project only
+      policies:
+        - p, proj:physrisk:project-admin, applications, get, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, create, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, update, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, delete, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, sync, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, override, physrisk/*, allow
+        - p, proj:physrisk:project-admin, applications, action/*, physrisk/*, allow
+      groups:
+        - physrisk-admins
+        - osc-admins

@@ -6,4 +6,5 @@ resources:
 #  - global_project.yaml
   - os-climate.yaml
   - osc-infra.yaml
+  - physrisk.yaml
 #  - sostrades.yaml

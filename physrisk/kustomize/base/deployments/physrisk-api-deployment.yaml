@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: physrisk-api
+    app.kubernetes.io/component: physrisk-api
+    app.kubernetes.io/name: physrisk-api
+    app.kubernetes.io/part-of: physrisk
+  name: physrisk-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: physrisk-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: physrisk-api
+    spec:
+      containers:
+      - name: physrisk-api
+        env:
+        - name: OSC_S3_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: HAZARD_INDICATORS_S3_ACCESS_KEY
+              name: physrisk-s3-keys
+        - name: OSC_S3_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: HAZARD_INDICATORS_S3_SECRET_KEY
+              name: physrisk-s3-keys
+        - name: OSC_TEST_USER_KEY
+          valueFrom:
+            secretKeyRef:
+              key: OSC_TEST_USER_KEY
+              name: physrisk-test-user
+        - name: OSC_S3_BUCKET
+          valueFrom:
+            secretKeyRef:
+              key: HAZARD_INDICATORS_S3_BUCKET
+              name: physrisk-s3-keys
+        image: quay.io/os-climate/physrisk-api:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

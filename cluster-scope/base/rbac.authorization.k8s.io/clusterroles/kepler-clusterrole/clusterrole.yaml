@@ -9,6 +9,7 @@ rules:
   - nodes/metrics
   - nodes/proxy
   - nodes/stats
+  - pods
   verbs:
   - 'get'
   - 'watch'
