@@ -31,7 +31,7 @@ spec:
             name: base-uris
             defaultMode: 420
       containers:
-      - image: quay.io/mmikhail/physrisk-ui:uri
+      - image: quay.io/os-climate/physrisk-ui:latest
         imagePullPolicy: IfNotPresent
         name: physrisk-ui
         ports:

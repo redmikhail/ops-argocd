@@ -1,6 +1,6 @@
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
-namespace: aicos-osc-demo
+namespace: physrisk
 resources:
     - namespace.yaml
 components:

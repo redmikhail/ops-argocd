@@ -1,25 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-patchesStrategicMerge:
-  - clusterrolebindings/cluster-readers.yaml
-  - oauths/cluster-patch.yaml
-  - configmaps/cluster-monitoring-config.yaml
-  - configmaps/user-workload-monitoring-config.yaml
-  - groups/cluster-admins.yaml
-  - groups/cluster-readers.yaml
-  - groups/grafana-admin.yaml
-  - groups/grafana-editor.yaml
-  - groups/grafana-viewer.yaml
-  - groups/kafka-admins.yaml
-  - groups/kubeflow-admin.yaml
-  - groups/odh-admin.yaml
-  - groups/odh-users.yaml
-  - groups/openshift-operators-admin.yaml
-  - groups/openshift-operators-view.yaml
-  - groups/pachyderm-admins.yaml
-  - groups/seldon-admin.yaml
-  - operators.coreos.com/patches/nfd-sub-patch.yaml
-  - operators.coreos.com/patches/strimzi-kafka-operator.yaml
 resources:
 - ../../../base/core/configmaps/cluster-monitoring-config
 - ../../../base/core/configmaps/user-workload-monitoring-config
@@ -66,6 +46,7 @@ resources:
 - ../../../base/user.openshift.io/groups/pachyderm-admins
 - ../../../base/user.openshift.io/groups/seldon-admin
 - ../../../base/user.openshift.io/groups/sostrades
+- ../../../base/user.openshift.io/groups/physrisk-admins
 - ../../../bundles/external-secrets-operator
 - ../../../bundles/openshift-cert-manager-operator
 - ../../../bundles/grafana-operator
@@ -88,3 +69,23 @@ resources:
 - nvidia-gpu
 - secret-mgmt
 - cert-manager
+patches:
+- path: clusterrolebindings/cluster-readers.yaml
+- path: oauths/cluster-patch.yaml
+- path: configmaps/cluster-monitoring-config.yaml
+- path: configmaps/user-workload-monitoring-config.yaml
+- path: operators.coreos.com/patches/nfd-sub-patch.yaml
+- path: operators.coreos.com/patches/strimzi-kafka-operator.yaml
+- path: groups/cluster-admins.yaml
+- path: groups/cluster-readers.yaml
+- path: groups/grafana-admin.yaml
+- path: groups/grafana-editor.yaml
+- path: groups/grafana-viewer.yaml
+- path: groups/kafka-admins.yaml
+- path: groups/kubeflow-admin.yaml
+- path: groups/odh-admin.yaml
+- path: groups/odh-users.yaml
+- path: groups/openshift-operators-admin.yaml
+- path: groups/openshift-operators-view.yaml
+- path: groups/pachyderm-admins.yaml
+- path: groups/seldon-admin.yaml

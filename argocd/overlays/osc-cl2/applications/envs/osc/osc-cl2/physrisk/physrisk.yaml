@@ -6,7 +6,7 @@ metadata:
 spec:
   project: physrisk
   source:
-    path: physrisk/kustomize/overlays/osc/osc-cl2
+    path: physrisk/kustomize/overlays/osc-cl2
     repoURL: https://github.com/redmikhail/ops-argocd.git
     targetRevision: argocd-migration
   destination:

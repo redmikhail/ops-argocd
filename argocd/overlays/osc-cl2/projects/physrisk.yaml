@@ -6,7 +6,7 @@ metadata:
     project-template: global
 spec:
   destinations:
-    - namespace: 'physrisk-namespace'
+    - namespace: 'physrisk'
       server: in-cluster
   sourceRepos:
     - '*'

@@ -59,12 +59,12 @@ staticClients:
       - http://grafana-opf-monitoring.apps.odh-cl2.apps.os-climate.org/login/generic_oauth
     secretEnv: GRAFANA_SECRET
 
-  - id: vault	
-    name: Vault	
-    redirectURIs:	
-      - https://vault-ui-vault.apps.odh-cl2.apps.os-climate.org/ui/vault/auth/oidc/oidc/callback	
-      - https://vault-ui-vault.apps.odh-cl2.apps.os-climate.org:8250/oidc/callback	
-      - http://localhost:8250/oidc/callback	
+  - id: vault
+    name: Vault
+    redirectURIs:
+      - https://vault-ui-vault.apps.odh-cl2.apps.os-climate.org/ui/vault/auth/oidc/oidc/callback
+      - https://vault-ui-vault.apps.odh-cl2.apps.os-climate.org:8250/oidc/callback
+      - http://localhost:8250/oidc/callback
     secretEnv: VAULT_STAGING_SECRET
 
 expiry:
